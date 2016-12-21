@@ -13,8 +13,8 @@ def segline(strin):
 
 def segfile(srcfile,rsfile):
 	err=0
-	with open(rsfile,"w") as fwrt:
-		with open(srcfile) as frd:
+	with open(rsfile,"wb") as fwrt:
+		with open(srcfile,"rb") as frd:
 			for line in frd:
 				tmp=line.strip()
 				if tmp:
