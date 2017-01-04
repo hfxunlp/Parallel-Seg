@@ -1,15 +1,14 @@
 #encoding: utf-8
 
 import sys
-import pynlpir
+from pynlpir import nlpir
 
 def segline(strin):
 	try:
-		rs=pynlpir.segment(strin.encode("utf-8","ignore"), pos_tagging=False)
+		rs=nlpir.ParagraphProcess(strin.encode("utf-8","ignore"), 1)
 	except:
-		rs=[]
-	rs=" ".join(rs)
-	return rs
+		rs=""
+	return rs.decode("utf-8","ignore")
 
 def segfile(srcfile,rsfile):
 	err=0
@@ -18,7 +17,7 @@ def segfile(srcfile,rsfile):
 			for line in frd:
 				tmp=line.strip()
 				if tmp:
-					segrs=segline(tmp.decode("utf-8","ignore"))
+					segrs=segline(tmp.decode("utf-8","ignore").replace(" ",""))
 					if segrs:
 						segrs+="\n"
 						fwrt.write(segrs.encode("utf-8","ignore"))
@@ -28,6 +27,6 @@ def segfile(srcfile,rsfile):
 		print("Seg:"+srcfile+",Error:"+str(err))
 
 if __name__=="__main__":
-	pynlpir.open()
-	segfile(sys.argv[1],sys.argv[2])
-	pynlpir.close()
+	nlpir.Init(nlpir.PACKAGE_DIR,nlpir.UTF8_CODE,None)
+	segfile(sys.argv[1].decode("utf-8"),sys.argv[2].decode("utf-8"))
+	nlpir.Exit()
