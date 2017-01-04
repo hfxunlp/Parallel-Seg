@@ -17,10 +17,10 @@ def segfile(srcfile,rsfile):
 			for line in frd:
 				tmp=line.strip()
 				if tmp:
-					segrs=segline(tmp.decode("utf-8","ignore"))
-					if segrs:
-						segrs+="\n"
-						fwrt.write(segrs.encode("utf-8","ignore"))
+					tmp=segline(tmp.decode("utf-8","ignore"))
+					if tmp:
+						tmp+="\n"
+						fwrt.write(tmp.encode("utf-8","ignore"))
 					else:
 						err+=1
 	if err>0:
