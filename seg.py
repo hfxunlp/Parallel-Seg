@@ -17,7 +17,7 @@ def segfile(srcfile,rsfile):
 			for line in frd:
 				tmp=line.strip()
 				if tmp:
-					segrs=segline(tmp.decode("utf-8","ignore").replace(" ",""))
+					segrs=segline(tmp.decode("utf-8","ignore"))
 					if segrs:
 						segrs+="\n"
 						fwrt.write(segrs.encode("utf-8","ignore"))
