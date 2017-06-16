@@ -19,7 +19,7 @@ def handle(srcf, rsf):
 				tmp=line.strip()
 				if tmp:
 					tmp=tmp.decode("utf-8","ignore")
-					tmp=tagline(rs, ptagger)
+					tmp=tagline(tmp, ptagger)
 					fwrt.write(tmp.encode("utf-8","ignore"))
 				fwrt.write("\n".encode("utf-8"))
 
