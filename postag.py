@@ -10,7 +10,7 @@ def tagline(srcl, ptag):
 	return " ".join(rs)
 
 def handle(srcf, rsf):
-  global mfile
+	global mfile
 	with open(srcf) as frd:
 		ptagger=Postagger()
 		ptagger.load(mfile)
@@ -24,5 +24,5 @@ def handle(srcf, rsf):
 				fwrt.write("\n".encode("utf-8"))
 
 if __name__=="__main__":
-  mfile="/media/Storage/data/ltp_data/pos.model"
+	mfile="/media/Storage/data/ltp_data/pos.model"
 	handle(sys.argv[1].decode("utf-8"), sys.argv[2].decode("utf-8"))
