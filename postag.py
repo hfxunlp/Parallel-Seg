@@ -2,15 +2,15 @@
 
 import sys
 from pyltp import Postagger
- 
-ltpdata="/media/Storage/data/ltp_data/"
-posmfile=ltpdata+"pos.model" 
 
-def handleline(srcl, ptag):
-	wds=srcl.split()
-	tags=ptag.postag(wds)
+ltpdata="/media/Storage/data/ltp_data/"
+posmfile=ltpdata+"pos.model"
+
+def handleline(srcl, ptagger):
+	wds=srcl.encode("utf-8","ignore").split()
+	tags=ptagger.postag(wds)
 	rs=["/".join(mu) for mu in zip(wds,tags)]
-	return " ".join(rs)
+	return " ".join(rs).decode("utf-8","ignore")
 
 def handle(srcf, rsf):
 	global posmfile
