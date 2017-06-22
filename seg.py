@@ -5,10 +5,10 @@ from pynlpir import nlpir
 
 def segline(strin):
 	try:
-		rs=nlpir.ParagraphProcess(strin.encode("utf-8","ignore"), 1)
+		rs=nlpir.ParagraphProcess(strin.encode("utf-8"), 1)
 	except:
 		rs=""
-	return rs.decode("utf-8","ignore")
+	return rs.decode("utf-8")
 
 def segfile(srcfile,rsfile):
 	err=0
