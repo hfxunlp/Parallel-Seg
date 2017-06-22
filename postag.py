@@ -7,10 +7,10 @@ ltpdata="/media/Storage/data/ltp_data/"
 posmfile=ltpdata+"pos.model"
 
 def handleline(srcl, ptagger):
-	wds=srcl.encode("utf-8","ignore").split()
+	wds=srcl.encode("utf-8").split()
 	tags=ptagger.postag(wds)
 	rs=["/".join(mu) for mu in zip(wds,tags)]
-	return " ".join(rs).decode("utf-8","ignore")
+	return " ".join(rs).decode("utf-8")
 
 def handle(srcf, rsf):
 	global posmfile
