@@ -5,13 +5,25 @@ import os
 from shutil import rmtree
 import monitor
 
-def getID(file, block_size=65536):
+def getID(file, max_block=False, block_size=65536):
 	calcer=sha1()
-	with open(file, 'rb') as f:
-		data=f.read(block_size)
-		while data:
-			calcer.update(data)
+	if max_block:
+		nr=1
+		with open(file, 'rb') as f:
 			data=f.read(block_size)
+			while data:
+				calcer.update(data)
+				nr+=1
+				if nr<max_block:
+					data=f.read(block_size)
+				else:
+					break
+	else:
+		with open(file, 'rb') as f:
+			data=f.read(block_size)
+			while data:
+				calcer.update(data)
+				data=f.read(block_size)
 	rs=calcer.hexdigest()
 	return rs
 
@@ -42,7 +54,7 @@ def mergers(rsf, rsp, nf):
 
 def handle(srcf, rsf, bsize=32768):
 	cached=".cache"
-	tid=getID(srcf)
+	tid=getID(srcf, 1024)
 	rd=os.path.join(cached, tid)
 	srcp=os.path.join(rd, "src")
 	nfile=cutfile(srcf, srcp, bsize)
