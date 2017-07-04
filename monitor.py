@@ -10,6 +10,7 @@ nthread=8
 sleeptime=5
 plock=threading.Lock()
 printlock=threading.Lock()
+cmd='pypy seg.py'
 
 def mulprint(strp):
 	global printlock
@@ -40,17 +41,17 @@ def get():
 		rs=""
 	return rsrc,rs,rstate
 
-def oneseg(srcf,rsf):
-	mulprint("seg:"+srcf+",to:"+rsf)
-	subprocess.call('python seg.py '+srcf+" "+rsf,shell=True)
+def handle_one(cmd,srcf,rsf):
+	mulprint("handle:"+srcf+",to:"+rsf)
+	subprocess.call(" ".join((cmd,srcf,rsf,)),shell=True)
 
 def core():
-	global nthread
+	global nthread, cmd
 	state=True
 	while state:
 		srcf,rsf,state=get()
 		if state:
-			oneseg(srcf,rsf)
+			handle_one(cmd,srcf,rsf)
 		else:
 			nthread-=1
 
@@ -70,4 +71,6 @@ def handle(src, rs):
 	del rsp
 
 if __name__=="__main__":
+	if len(sys.argv)>3:
+		cmd=sys.argv[3].decode("utf-8")
 	handle(sys.argv[1].decode("utf-8"), sys.argv[2].decode("utf-8"))
