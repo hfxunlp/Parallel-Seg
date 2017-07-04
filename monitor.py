@@ -55,6 +55,7 @@ def core():
 			nthread-=1
 
 def handle(src, rs):
+	global nthread
 	srcp,rsp=createPool(src, rs)
 	tpool=[]
 	for i in xrange(nthread):
