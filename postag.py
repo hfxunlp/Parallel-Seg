@@ -10,7 +10,7 @@ def handleline(srcl, ptagger):
 	wds=srcl.encode("utf-8").split()
 	tags=ptagger.postag(wds)
 	rs=["/".join(mu) for mu in zip(wds,tags)]
-	return " ".join(rs).decode("utf-8")
+	return " ".join(rs).decode("utf-8","ignore")
 
 def handle(srcf, rsf):
 	global posmfile
@@ -23,7 +23,7 @@ def handle(srcf, rsf):
 				if tmp:
 					tmp=tmp.decode("utf-8","ignore")
 					tmp=handleline(tmp, ptagger)
-					fwrt.write(tmp.encode("utf-8","ignore"))
+					fwrt.write(tmp.encode("utf-8"))
 				fwrt.write("\n")
 
 if __name__=="__main__":
