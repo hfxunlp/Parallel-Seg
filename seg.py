@@ -8,7 +8,7 @@ def segline(strin):
 		rs=nlpir.ParagraphProcess(strin.encode("utf-8"), 1)
 	except:
 		rs=""
-	return rs.decode("utf-8")
+	return rs.decode("utf-8","ignore")
 
 def handle(srcfile,rsfile):
 	err=0
@@ -19,7 +19,7 @@ def handle(srcfile,rsfile):
 				if tmp:
 					tmp=segline(tmp.decode("utf-8","ignore"))
 					if tmp:
-						fwrt.write(tmp.encode("utf-8","ignore"))
+						fwrt.write(tmp.encode("utf-8"))
 					else:
 						err+=1
 				fwrt.write("\n")
