@@ -14,7 +14,7 @@ parmfile=os.path.join(ltpdata, "parser.model")
 def buildata(wdl, tl, al):
 	rs=[]
 	for wd, t, au in zip(wdl, tl, al):
-		rs.append("\t".join((wd, t, au.relation, au.head,)))
+		rs.append("\t".join((wd, t, au.relation, str(au.head),)))
 	return rs
 
 def handleline(srcl, segger, ptagger, parser):
