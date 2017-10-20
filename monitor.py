@@ -66,6 +66,8 @@ def handle(src, rs):
 		tpool.append(t)
 	while nthread>0:
 		sleep(sleeptime)
+	for t in tpool:
+		t.join()
 	del tpool
 	del srcp
 	del rsp
