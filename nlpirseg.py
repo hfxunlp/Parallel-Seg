@@ -52,7 +52,7 @@ def handle(srcfile,rsfile):
 		print("".join(("Seg:",srcfile,",Error:",str(err),)))
 
 if __name__=="__main__":
-	nlpir.Init(nlpir.PACKAGE_DIR,nlpir.UTF8_CODE,None)
+	nlpir.Init(nlpir.PACKAGE_DIR, nlpir.UTF8_CODE, '')
 	#nlpir.SetPOSmap(nlpir.PKU_POS_MAP_SECOND)#ICT_POS_MAP_SECOND/FIRST
 	handle(sys.argv[1], sys.argv[2])
 	nlpir.Exit()
