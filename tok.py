@@ -17,6 +17,7 @@ def segline(strin, tok, to_lower = False):
 
 def handle(srcfile,rsfile):
 	err=0
+	ens="\n".encode("utf-8")
 	with open(rsfile,"wb") as fwrt:
 		with open(srcfile,"rb") as frd:
 			tok = Tokenizer()
@@ -28,7 +29,7 @@ def handle(srcfile,rsfile):
 						fwrt.write(tmp.encode("utf-8", "ignore"))
 					else:
 						err+=1
-				fwrt.write("\n")
+				fwrt.write(ens)
 	if err>0:
 		print("".join(("Seg:",srcfile,",Error:",str(err),)))
 
