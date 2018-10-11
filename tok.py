@@ -13,7 +13,7 @@ def segline(strin, tok, to_lower = False):
 			return " ".join(rs).lower()
 		else:
 			return " ".join(rs).lower()
-	return clearstr(tok.tokenize(core, return_str=True, escape=False).split(), to_lower)
+	return clearstr(tok.tokenize(strin, return_str=True, escape=False).split(), to_lower)
 
 def handle(srcfile,rsfile):
 	err=0
