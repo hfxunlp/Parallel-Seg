@@ -18,7 +18,7 @@ def segline(strin, tok, to_lower = False):
 def handle(srcfile,rsfile):
 	err=0
 	with open(rsfile,"wb", encoding='utf-8', errors='ignore') as fwrt:
-		with open(srcfile,"rb", encoding='utf-8', errors='ignore) as frd:
+		with open(srcfile,"rb", encoding='utf-8', errors='ignore') as frd:
 			tok = MosesTokenizer(lang='en')
 			for line in frd:
 				tmp=line.strip()
