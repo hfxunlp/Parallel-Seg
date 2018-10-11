@@ -29,7 +29,7 @@ def handle(srcfile,rsfile):
 					except Exception as e:
 						tmp = ""
 					if tmp:
-						tmp=segline(, tok)
+						tmp=segline(tmp, tok)
 						if tmp:
 							fwrt.write(tmp.encode("utf-8", "ignore"))
 						else:
