@@ -1,7 +1,7 @@
 #encoding: utf-8
 
 import sys
-import nltk.tokenize.moses.MosesTokenizer as MosesTokenizer
+import nltk.tokenize.nist.NISTTokenizer as Tokenizer
 
 def segline(strin, tok, to_lower = False):
 	def clearstr(lin, to_lower):
@@ -19,7 +19,7 @@ def handle(srcfile,rsfile):
 	err=0
 	with open(rsfile,"wb", encoding='utf-8', errors='ignore') as fwrt:
 		with open(srcfile,"rb", encoding='utf-8', errors='ignore') as frd:
-			tok = MosesTokenizer(lang='en')
+			tok = Tokenizer()
 			for line in frd:
 				tmp=line.strip()
 				if tmp:
