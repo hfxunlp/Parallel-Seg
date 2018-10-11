@@ -17,15 +17,15 @@ def segline(strin, tok, to_lower = False):
 
 def handle(srcfile,rsfile):
 	err=0
-	with open(rsfile,"wb", encoding='utf-8', errors='ignore') as fwrt:
-		with open(srcfile,"rb", encoding='utf-8', errors='ignore') as frd:
+	with open(rsfile,"wb") as fwrt:
+		with open(srcfile,"rb") as frd:
 			tok = Tokenizer()
 			for line in frd:
 				tmp=line.strip()
 				if tmp:
-					tmp=segline(tmp, tok)
+					tmp=segline(tmp.decode("utf-8", "ignore"), tok)
 					if tmp:
-						fwrt.write(tmp)
+						fwrt.write(tmp.encode("utf-8", "ignore"))
 					else:
 						err+=1
 				fwrt.write("\n")
