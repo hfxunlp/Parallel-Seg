@@ -1,7 +1,7 @@
 #encoding: utf-8
 
 import sys
-import nltk.tokenize.nist.NISTTokenizer as Tokenizer
+from nltk.tokenize.nist import NISTTokenizer as Tokenizer
 
 def segline(strin, tok, to_lower = False):
 	def clearstr(lin, to_lower):
