@@ -24,9 +24,16 @@ def handle(srcfile,rsfile):
 			for line in frd:
 				tmp=line.strip()
 				if tmp:
-					tmp=segline(tmp.decode("utf-8", "ignore"), tok)
+					try:
+						tmp = tmp.decode("utf-8")
+					except Exception as e:
+						tmp = ""
 					if tmp:
-						fwrt.write(tmp.encode("utf-8", "ignore"))
+						tmp=segline(, tok)
+						if tmp:
+							fwrt.write(tmp.encode("utf-8", "ignore"))
+						else:
+							err+=1
 					else:
 						err+=1
 				fwrt.write(ens)
